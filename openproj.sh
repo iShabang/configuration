@@ -3,7 +3,7 @@
 function openproj(){
     pathalias=$1
     arg=$2
-    path=$(python3 /home/smontoya-curtin/projects.py $pathalias)
+    path=$(python3 $HOME/bin/projects.py $pathalias)
     vimFileList="files.txt"
 
     if [ "$path" = "none" ]; then
