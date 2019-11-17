@@ -20,8 +20,14 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go'
 Plug 'scrooloose/nerdtree'
+Plug 'baverman/vial'
+Plug 'baverman/vial-http'
 call plug#end()
 
+"CTRLP Requirement"
+set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
+
+"NERDTree mapping"
 nnoremap <C-o> :NERDTree<CR>
 
 " disable vim-go :GoDef short cut (gd)
