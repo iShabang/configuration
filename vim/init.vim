@@ -30,6 +30,26 @@ set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
 "NERDTree mapping"
 nnoremap <C-o> :NERDTree<CR>
 
+"Terminal"
+nnoremap S :vsplit<space>term://bash<CR>
+nnoremap J :split<space>term://bash<CR>
+nnoremap T :terminal<CR>
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+tnoremap <C-p> <C-\><C-N>:CtrlP<CR>
+tnoremap kj <C-\><C-N>
+
+"Split
+set splitright
+set splitbelow
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
