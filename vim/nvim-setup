@@ -4,6 +4,7 @@ mv nvim.appimage nvim
 sudo mv nvim /usr/bin/
 sudo chmod +x /usr/bin/nvim
 mkdir -p .config/nvim/autoload
+mkdir .config/nvim/colors
 
 # add line to .profile or .bashrc
 # alias vim=nvim
@@ -21,6 +22,19 @@ sudo apt-get install -y nodejs
 sudo apt-get install python3-pip
 pip3 install pynvim
 
+#Clangd must be installed for c++ language server setup
+#settings should already be in coc-settings.json
+sudo apt-get install clang-tools-8
+
+#Manually setup the colorshcheme to onedark.vim
+git clone https://github.com/joshdick/onedark.vim.git
+cp -r onedark.vim/autoload/* .config/nvim/autoload/
+cp -r onedark.vim/colors* .config/nvim/colors/
+
+#Install Source Code Pro for Powerline font
+git clone https://github.com/powerline/fonts.git
+sudo mkdir /usr/share/fonts/opentype/
+cp -r fonts/SourceCodePro /usr/share/fonts/opentype/
 
 #Go related setup
 vim +GoInstallBinaries

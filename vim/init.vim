@@ -42,7 +42,6 @@ Plug 'fatih/vim-go'
 Plug 'scrooloose/nerdtree'
 Plug 'baverman/vial'
 Plug 'baverman/vial-http'
-Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline' 
 call plug#end()
 
