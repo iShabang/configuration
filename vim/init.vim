@@ -43,6 +43,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'baverman/vial'
 Plug 'baverman/vial-http'
 Plug 'joshdick/onedark.vim'
+Plug 'vim-airline/vim-airline' 
 call plug#end()
 
 "CTRLP Requirement"
@@ -75,6 +76,46 @@ augroup TerminalStuff
     au!
     autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
+
+"Keybindings
+" fold file based on syntax
+nnoremap <silent> <leader>zs :setlocal foldmethod=syntax<CR>
+
+" replace word under cursor, globally, with confirmation
+nnoremap <Leader>k :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+" interactive find replace preview
+vnoremap <Leader>k y :%s/<C-r>"//gc<Left><Left><Left>
+set inccommand=nosplit
+
+nnoremap <silent> <CR> :nohl<CR>
+
+" prevent entering ex mode accidentally
+nnoremap Q <Nop>
+
+" Search for selected text
+vnoremap * "xy/<C-R>x<CR>
+
+" Source (reload) your vimrc. Type space, s, o in sequence to trigger
+nnoremap <leader>so :source $MYVIMRC<cr>
+
+" change dir to current file's dir
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" Index ctags from any project, including those outside Rails
+map <Leader>ct :!ctags -R .<CR>
+
+" command typo mapping
+cnoremap WQ wq
+cnoremap Wq wq
+cnoremap QA qa
+cnoremap qA qa
+cnoremap Q! q!
+
+" copy to end of line
+nnoremap Y y$
+
+" copy to system clipboard
+noremap gy "+y
 
 
 " disable vim-go :GoDef short cut (gd)
@@ -209,3 +250,8 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+"AIRLINE"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
