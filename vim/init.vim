@@ -2,15 +2,35 @@ set number
 set relativenumber
 set tabstop=4
 set shiftwidth=4
+set shiftround        " Round indent to multiple of 'shiftwidth'
 set expandtab
 set autoindent
 
+colorscheme onedark
+
+" text appearance
+set textwidth=80
+set nowrap                          " nowrap by default
+set list                            " show invisible characters
+set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
+
+set termguicolors     " enable true colors
+set incsearch         " do incremental searching
+
+set foldmethod=manual " set folds by syntax of current language
+set foldcolumn=2      " display gutter markings for folds
+set mouse=a           " enable mouse (selection, resizing windows)
+set ttyfast           " should make scrolling faster
+set lazyredraw        " should make scrolling faster
+
+set numberwidth=1
+
 "Split Keybindings
 nnoremap tn  :tabnew<Space>
-nnoremap tk  :tabnext<CR>
-nnoremap tj  :tabprev<CR>
-nnoremap th  :tabfirst<CR>
-nnoremap tl  :tablast<CR>
+nnoremap <silent> tk  :tabnext<CR>
+nnoremap <silent> tj  :tabprev<CR>
+nnoremap <silent> th  :tabfirst<CR>
+nnoremap <silent> tl  :tablast<CR>
 
 inoremap kj  <Esc>
 cnoremap kh  <Esc>
@@ -22,18 +42,20 @@ Plug 'fatih/vim-go'
 Plug 'scrooloose/nerdtree'
 Plug 'baverman/vial'
 Plug 'baverman/vial-http'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 "CTRLP Requirement"
 set runtimepath^=~/.config/nvim/bundle/ctrlp.vim
+set wildignore+=*/github.com/*,*/go.mongodb.org/*,*/golang.org/*
 
 "NERDTree mapping"
 nnoremap <C-o> :NERDTree<CR>
 
 "Terminal"
-nnoremap S :vsplit<space>term://bash<CR>
-nnoremap J :split<space>term://bash<CR>
-nnoremap T :terminal<CR>
+nnoremap <silent> S :vsplit<space>term://bash<CR>
+nnoremap <silent> J :split<space>term://bash<CR>
+nnoremap <silent> T :terminal<CR>
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
@@ -48,6 +70,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+
+augroup TerminalStuff
+    au!
+    autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
 
 
 " disable vim-go :GoDef short cut (gd)
