@@ -6,7 +6,7 @@ set shiftround        " Round indent to multiple of 'shiftwidth'
 set expandtab
 set autoindent
 
-colorscheme onedark
+colorscheme jellybeans
 
 " text appearance
 set textwidth=80
@@ -17,8 +17,6 @@ set listchars=tab:»·,trail:·,nbsp:· " Display extra whitespace
 set termguicolors     " enable true colors
 set incsearch         " do incremental searching
 
-set foldmethod=manual " set folds by syntax of current language
-set foldcolumn=2      " display gutter markings for folds
 set mouse=a           " enable mouse (selection, resizing windows)
 set ttyfast           " should make scrolling faster
 set lazyredraw        " should make scrolling faster
